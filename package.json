@@ -1,0 +1,61 @@
+{
+  "name": "zui-assembly",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm -C play dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
+    "commitlint": "commitlint --config commitlint.config.js -e -V",
+    "lint:style": "stylelint \"**/*.{css,scss,vue}\"",
+    "fix:style": "stylelint --fix \"**/*.{css,scss,vue}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zui-assembly/components": "workspace:*",
+    "@zui-assembly/theme-style": "workspace:*",
+    "@zui-assembly/utils": "workspace:*",
+    "sass": "^1.59.3",
+    "typescript": "^5.0.2",
+    "unplugin-vue-define-options": "^1.2.4",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "eslint": "^8.36.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "mrm": "^4.1.14",
+    "postcss": "^8.4.12",
+    "postcss-html": "^1.3.0",
+    "stylelint": "^14.6.0",
+    "stylelint-config-html": "^1.0.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^7.0.0",
+    "stylelint-config-recommended-scss": "^7.0.0",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^4.0.0",
+    "stylelint-order": "^6.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "**/*.{scss,less,vue}": "stylelint --fix"
+  }
+}

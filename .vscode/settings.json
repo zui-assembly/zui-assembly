@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true, // 开启自动修复
+    "source.fixAll.stylelint": true // 开启 stylelint 自动修复
+  },
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}
