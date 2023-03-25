@@ -1,0 +1,7 @@
+$namespace: 'z';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: 'is-';
+$first-child: ':first-child';
+$last-child: ':last-child';
+$not-all: ':not(:first-child):not(:last-child)';
