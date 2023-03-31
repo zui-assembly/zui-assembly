@@ -62,10 +62,10 @@ import { CashOutline } from '@vicons/ionicons5';
 
 ### Icon Props
 
-| 名称  | 类型             | 默认值    | 说明     |
-| ----- | ---------------- | --------- | -------- |
-| color | string           | undefined | 图标颜色 |
-| size  | number \| string | undefined | 图片大小 |
+| 参数  | 类型             | 可选 | 说明     | 默认值 |
+| ----- | ---------------- | ---- | -------- | ------ |
+| color | string           | -    | 图标颜色 | -      |
+| size  | number \| string | -    | 图片大小 | -      |
 
 <style>
 .demo-block {

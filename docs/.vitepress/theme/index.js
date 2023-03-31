@@ -1,6 +1,7 @@
 // 引入vitepress的默认主题
 import DefaultTheme from 'vitepress/theme';
 
+import { Button as ZButton, ButtonGroup as ZButtonGroup } from '@zui-assembly/components/button';
 import ZIcon from '@zui-assembly/components/icon';
 import '@zui-assembly/theme-style/src/index.scss';
 
@@ -12,5 +13,7 @@ export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
     app.use(ZIcon); // 在vitepress中 注册全局组件
+    app.use(ZButton);
+    app.use(ZButtonGroup);
   }
 };

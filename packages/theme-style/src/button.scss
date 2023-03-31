@@ -1,0 +1,193 @@
+@use 'mixins/mixins' as *;
+@use 'common/var' as *;
+
+@include b(button) {
+  // BEM规范
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+  color: #606266;
+  background: #ffffff;
+  outline: none;
+  appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  vertical-align: middle;
+
+  // 设置icon的相邻span的margin-left
+  [class*='z-icon'] + span {
+    margin-left: 5px;
+  }
+
+  @include m(medium) {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  @include m(small) {
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  @include m(mini) {
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  @include when(disabled) {
+    // 针对不同类型处理
+    &,
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      background-image: none;
+    }
+  }
+
+  @include whenD('.z-button--primary', 'disabled') {
+    @include is-disabled($color-white, $primary-disabled-background, $primary-disabled-border);
+  }
+
+  @include whenD('.z-button--success', 'disabled') {
+    @include is-disabled($color-white, $success-disabled-background, $success-disabled-border);
+  }
+
+  @include whenD('.z-button--warning', 'disabled') {
+    @include is-disabled($color-white, $warning-disabled-background, $warning-disabled-border);
+  }
+
+  @include whenD('.z-button--danger', 'disabled') {
+    @include is-disabled($color-white, $danger-disabled-background, $danger-disabled-border);
+  }
+
+  @include whenD('.z-button--info', 'disabled') {
+    @include is-disabled($color-white, $info-disabled-background, $info-disabled-border);
+  }
+
+  @include whenD('.z-button--default', 'circle') {
+    @include is-circle();
+  }
+
+  @include whenD('.z-button--primary', 'circle') {
+    @include is-circle();
+  }
+
+  @include whenD('.z-button--success', 'circle') {
+    @include is-circle();
+  }
+
+  @include whenD('.z-button--warning', 'circle') {
+    @include is-circle();
+  }
+
+  @include whenD('.z-button--danger', 'circle') {
+    @include is-circle();
+  }
+
+  @include whenD('.z-button--info', 'circle') {
+    @include is-circle();
+  }
+
+  @include whenFirst('.z-button--default') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenFirst('.z-button--primary') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenFirst('.z-button--success') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenFirst('.z-button--warning') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenFirst('.z-button--danger') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenFirst('.z-button--info') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenLast('.z-button--default') {
+    border-right-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenLast('.z-button--primary') {
+    border-left-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenLast('.z-button--success') {
+    border-left-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenLast('.z-button--warning') {
+    border-left-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenLast('.z-button--danger') {
+    border-left-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include whenLast('.z-button--info') {
+    border-left-color: hsl(0deg 0% 100% / 50%);
+  }
+
+  @include when(round) {
+    border-radius: 20px;
+  }
+
+  @include m(text) {
+    @include button-text($color-primary);
+  }
+
+  @include whenD('.z-button--text', 'disabled') {
+    @include is-disabled($default-disabled-color, transparent, transparent);
+  }
+
+  @include m(primary) {
+    //渲染不同类型的button
+    @include button-variant($color-white, $color-primary, $color-primary);
+  }
+
+  @include m(success) {
+    @include button-variant($color-white, $color-success, $color-success);
+  }
+
+  @include m(warning) {
+    @include button-variant($color-white, $color-warning, $color-warning);
+  }
+
+  @include m(danger) {
+    @include button-variant($color-white, $color-danger, $color-danger);
+  }
+
+  @include m(info) {
+    @include button-variant($color-white, $color-info, $color-info);
+  }
+
+  @include m(default) {
+    @include button-variant($color-default, $color-white, $color-gray);
+  }
+}
+
+// 定义group样式
+@include g(button, group) {
+  display: inline-block;
+  vertical-align: middle;
+}
