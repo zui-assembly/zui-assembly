@@ -68,7 +68,7 @@ import { CashOutline } from '@vicons/ionicons5';
 | size  | number \| string | -    | 图片大小 | -      |
 
 <style>
-.demo-block {
+/* .demo-block {
   border: 1px solid #ebebeb;
   border-radius: 3px;
   transition: .2s;
@@ -83,5 +83,5 @@ import { CashOutline } from '@vicons/ionicons5';
 
 .demo-block .source .demo-row .z-button+.z-button {
     margin-left: 10px;
-}
+} */
 </style>

@@ -1,13 +1,13 @@
 <template>
   <button
     :class="[
-      bem.b(),
-      bem.m(type),
-      bem.m(size),
-      bem.is('round', round),
-      bem.is('circle', circle),
-      bem.is('loading', loading),
-      bem.is('disabled', disabled)
+      cra.b(),
+      cra.m(type),
+      cra.m(size),
+      cra.is('round', round),
+      cra.is('circle', circle),
+      cra.is('loading', loading),
+      cra.is('disabled', disabled)
     ]"
     :type="nativeType"
     :disabled="disabled || loading"
@@ -44,7 +44,7 @@ import { createNamespace } from '@zui-assembly/utils/create';
 import { useSlots } from 'vue';
 import { buttonEmits, buttonProps } from './button';
 
-const bem = createNamespace('button'); // z-button
+const cra = createNamespace('button'); // z-button
 defineOptions({
   name: 'z-button',
   inheritAttrs: false

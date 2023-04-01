@@ -2,10 +2,12 @@ module.exports = {
   title: 'Zui-Assembly',
   description: '🚩UI - component library for Vue3',
   themeConfig: {
+    logo: '../public/cat.jpeg',
     lastUpdated: '最后更新时间',
     docsDir: 'docs',
     editLinks: true,
     editLinkText: '编辑此网站',
+    socialLinks: [{ icon: 'github', link: 'https://github.com/zui-assembly/zui-assembly' }],
     repo: 'https://gitee.com/zui-assembly',
     footer: {
       message: 'No license.',
@@ -27,12 +29,16 @@ module.exports = {
       ],
       '/component/': [
         {
-          text: '基础组件',
+          text: 'Basic',
           items: [
             { text: 'Icon 图标', link: '/component/icon' },
             { text: 'Button 按钮', link: '/component/button' },
             { text: 'Link 文字链接', link: '/component/link' }
           ]
+        },
+        {
+          text: 'Form',
+          items: []
         }
       ]
     }

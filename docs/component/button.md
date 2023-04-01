@@ -463,25 +463,9 @@ import { ChevronBack, ChevronForward, AirplaneOutline, GitBranchOutline, TrashOu
 | native-type   | string  | button / submit / reset                                      | 原生 type 属性 | button |
 
 <style>
-.demo-block {
-  border: 1px solid #ebebeb;
-  border-radius: 3px;
-  transition: .2s;
-}
-.demo-block .source {
-  padding: 24px;
-}
 
 .demo-block .source .demo-group {
   margin-left: 10px;
-}
-
-.demo-block .source .demo-row:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.demo-block .source .demo-row .z-button+.z-button {
-    margin-left: 10px;
 }
 
 .description {

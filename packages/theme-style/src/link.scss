@@ -1,0 +1,149 @@
+@use 'mixins/mixins' as *;
+@use 'common/var' as *;
+
+@include b(link) {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  outline: none;
+  flex-direction: row;
+  vertical-align: middle;
+  cursor: pointer;
+  &:hover {
+    color: $color-primary;
+  }
+
+  // 设置icon的相邻span的margin-left
+  [class*='z-icon'] + span {
+    margin-left: 5px;
+  }
+  span > [class*='z-icon'] {
+    margin-left: 5px;
+  }
+
+  @include m(default) {
+    //渲染不同类型的link
+    @include link-variant($color-default);
+  }
+
+  @include m(primary) {
+    @include link-variant($color-primary);
+  }
+
+  @include m(success) {
+    @include link-variant($color-success);
+  }
+
+  @include m(warning) {
+    @include link-variant($color-warning);
+  }
+
+  @include m(danger) {
+    @include link-variant($color-danger);
+  }
+
+  @include m(info) {
+    @include link-variant($color-info);
+  }
+
+  @include m(inner) {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+  }
+
+  @include whenD('.z-link--default', 'underline') {
+    &:hover::after {
+      @include is-underline($color-primary);
+    }
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  @include whenD('.z-link--primary', 'underline') {
+    &:hover::after {
+      @include is-underline($color-primary);
+    }
+    &:hover {
+      color: $primary-hover-color;
+    }
+  }
+
+  @include whenD('.z-link--success', 'underline') {
+    &:hover::after {
+      @include is-underline($color-success);
+    }
+    &:hover {
+      color: $success-hover-color;
+    }
+  }
+
+  @include whenD('.z-link--warning', 'underline') {
+    &:hover::after {
+      @include is-underline($color-warning);
+    }
+    &:hover {
+      color: $warning-hover-color;
+    }
+  }
+
+  @include whenD('.z-link--danger', 'underline') {
+    &:hover::after {
+      @include is-underline($color-danger);
+    }
+    &:hover {
+      color: $danger-hover-color;
+    }
+  }
+
+  @include whenD('.z-link--info', 'underline') {
+    &:hover::after {
+      @include is-underline($color-info);
+    }
+    &:hover {
+      color: $info-hover-color;
+    }
+  }
+
+  @include whenD('.z-link--default', 'disabled') {
+    @include link-variant($default-disabled-color);
+
+    cursor: not-allowed;
+  }
+
+  @include whenD('.z-link--primary', 'disabled') {
+    @include link-variant($primary-disabled-background);
+
+    cursor: not-allowed;
+  }
+
+  @include whenD('.z-link--success', 'disabled') {
+    @include link-variant($success-disabled-background);
+
+    cursor: not-allowed;
+  }
+
+  @include whenD('.z-link--warning', 'disabled') {
+    @include link-variant($warning-disabled-background);
+
+    cursor: not-allowed;
+  }
+
+  @include whenD('.z-link--danger', 'disabled') {
+    @include link-variant($danger-disabled-background);
+
+    cursor: not-allowed;
+  }
+
+  @include whenD('.z-link--info', 'disabled') {
+    @include link-variant($info-disabled-background);
+
+    cursor: not-allowed;
+  }
+}

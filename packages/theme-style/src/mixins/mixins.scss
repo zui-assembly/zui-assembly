@@ -65,6 +65,7 @@
   }
 }
 
+// .z-button.z-button--primary.is-xx
 @mixin whenD($child, $state) {
   @at-root #{selector.unify(&, $child)} {
     @at-root &.#{$state-prefix + $state} {
@@ -97,6 +98,10 @@
   background: $background-color;
 }
 
+@mixin link-variant($color) {
+  color: $color;
+}
+
 @mixin is-disabled($color, $background-color, $border-color) {
   border-color: $border-color;
   color: $color;
@@ -106,6 +111,15 @@
 @mixin is-circle() {
   padding: 12px;
   border-radius: 50%;
+}
+
+@mixin is-underline($color) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid $color;
+  content: '';
 }
 
 @mixin button-text($color) {
