@@ -4,115 +4,19 @@
 
 ## 基础用法
 
-- 基础的文字链接用法。
-
-<script setup lang="ts">
-import { ChatboxEllipsesOutline, EyeSharp } from '@vicons/ionicons5';
-</script>
-
-<div class="demo-block demo-button">
-<div class="source">
-<div class="demo-row">
-  <z-link>默认链接</z-link>
-  <z-link type="primary">主要链接</z-link>
-  <z-link type="success">成功链接</z-link>
-  <z-link type="warning">警告链接</z-link>
-  <z-link type="danger">危险链接</z-link>
-  <z-link type="info">信息链接</z-link>
-</div>
-</div>
-</div>
-
-```vue
-<template>
-  <z-link>默认链接</z-link>
-  <z-link type="primary">主要链接</z-link>
-  <z-link type="success">成功链接</z-link>
-  <z-link type="warning">警告链接</z-link>
-  <z-link type="danger">危险链接</z-link>
-  <z-link type="info">信息链接</z-link>
-</template>
-```
+<demo src="./link/link-base.vue" title="基础的文字链接用法"></demo>
 
 ## 禁用状态
 
-- 文字链接不可用状态。
-
-<div class="demo-block demo-button">
-<div class="source">
-<div class="demo-row">
-  <z-link disabled>默认链接</z-link>
-  <z-link type="primary" disabled>主要链接</z-link>
-  <z-link type="success" disabled>成功链接</z-link>
-  <z-link type="warning" disabled>警告链接</z-link>
-  <z-link type="danger" disabled>危险链接</z-link>
-  <z-link type="info" disabled>信息链接</z-link>
-</div>
-</div>
-</div>
-
-```vue
-<template>
-  <z-link disabled>默认链接</z-link>
-  <z-link type="primary" disabled>主要链接</z-link>
-  <z-link type="success" disabled>成功链接</z-link>
-  <z-link type="warning" disabled>警告链接</z-link>
-  <z-link type="danger" disabled>危险链接</z-link>
-  <z-link type="info" disabled>信息链接</z-link>
-</template>
-```
+<demo src="./link/link-disabled.vue" title="文字链接不可用状态"></demo>
 
 ## 下划线
 
-- 文字链接下划线。
-
-<div class="demo-block demo-button">
-<div class="source">
-<div class="demo-row">
-  <z-link :underline="false">无下划线</z-link>
-  <z-link>有下划线</z-link>
-</div>
-</div>
-</div>
-
-```vue
-<template>
-  <z-link :underline="false">无下划线</z-link>
-  <z-link>有下划线</z-link>
-</template>
-```
+<demo src="./link/link-underline.vue" title="文字链接下划线"></demo>
 
 ## 图标
 
-- 带图标的文字链接可增强辨识度。
-
-<div class="demo-block demo-button">
-<div class="source">
-<div class="demo-row">
-  <z-link icon-placement="left">
-    <template #icon><ChatboxEllipsesOutline /></template>
-    信息
-  </z-link>
-  <z-link icon-placement="right">
-    <template #icon><EyeSharp /></template>
-    查看
-  </z-link>
-</div>
-</div>
-</div>
-
-```vue
-<template>
-  <z-link icon-placement="left">
-    <template #icon><ChatboxEllipsesOutline /></template>
-    信息
-  </z-link>
-  <z-link icon-placement="right">
-    <template #icon><EyeSharp /></template>
-    查看
-  </z-link>
-</template>
-```
+<demo src="./link/link-icon.vue" title="带图标的文字链接可增强辨识度"></demo>
 
 ## API
 

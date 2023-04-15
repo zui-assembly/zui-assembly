@@ -4,12 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev ."
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview . --port 8899",
+    "docs:serve": "vitepress serve . --port 8089"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "workspaces": [
+    "../"
+  ],
   "devDependencies": {
-    "vitepress": "1.0.0-alpha.4"
+    "@ruabick/md-demo-plugins": "latest",
+    "@ruabick/vite-plugin-gen-api-doc": "latest",
+    "@ruabick/vite-plugin-gen-temp": "latest",
+    "@ruabick/vitepress-demo-block": "latest",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "postcss-prefix-selector": "^1.16.0",
+    "vite": "^3.0.2",
+    "vitepress": "1.0.0-alpha.29"
   }
 }

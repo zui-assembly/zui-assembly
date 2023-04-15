@@ -12,6 +12,12 @@ hero:
     - theme: brand
       text: 快速开始
       link: /guide/quieStart
+    - theme: brand
+      text: 组件库
+      link: /component/demo
+    - theme: alt
+      text: 在 Github 查看
+      link: https://github.com/zui-assembly/zui-assembly
 
 features:
   - icon: 🛠️

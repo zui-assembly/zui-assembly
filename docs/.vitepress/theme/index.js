@@ -1,4 +1,6 @@
 // 引入vitepress的默认主题
+import DemoBlock from '@ruabick/vitepress-demo-block';
+import '@ruabick/vitepress-demo-block/dist/style.css';
 import DefaultTheme from 'vitepress/theme';
 import './style/var.css';
 
@@ -18,5 +20,7 @@ export default {
     app.use(ZButton);
     app.use(ZButtonGroup);
     app.use(ZLink);
+
+    app.component('demo', DemoBlock);
   }
 };

@@ -100,54 +100,6 @@
     @include is-circle();
   }
 
-  @include whenFirst('.z-button--default') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenFirst('.z-button--primary') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenFirst('.z-button--success') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenFirst('.z-button--warning') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenFirst('.z-button--danger') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenFirst('.z-button--info') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenLast('.z-button--default') {
-    border-right-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenLast('.z-button--primary') {
-    border-left-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenLast('.z-button--success') {
-    border-left-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenLast('.z-button--warning') {
-    border-left-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenLast('.z-button--danger') {
-    border-left-color: hsl(0deg 0% 100% / 50%);
-  }
-
-  @include whenLast('.z-button--info') {
-    border-left-color: hsl(0deg 0% 100% / 50%);
-  }
-
   @include when(round) {
     border-radius: 20px;
   }
