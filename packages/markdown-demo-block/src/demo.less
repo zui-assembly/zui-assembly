@@ -5,6 +5,7 @@
   --demo-border-color: #6b6c6d;
 }
 .vitepress-demo {
+  box-sizing: border-box;
   margin-bottom: 24px;
   border: 1px solid var(--demo-border-color);
   border-radius: 1px;
@@ -53,6 +54,40 @@
   .demo-platforms {
     display: flex;
     align-items: center;
+  }
+  .demo-tootips {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 21px;
+      left: 7px;
+      z-index: 9999;
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7px;
+      border-color: transparent;
+      border-top-width: 0;
+      border-bottom-color: #303133;
+      content: '';
+    }
+    &::after {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      z-index: 9999;
+      padding: 5px;
+      width: max-content;
+      font-size: 12px;
+      border-radius: 4px;
+      color: #ffffff;
+      background: #303133;
+      line-height: 1.2;
+      transform: translate(0, 100%);
+      transform-origin: center bottom;
+      content: attr(data-sfc);
+    }
   }
   .demo-title-desc {
     position: relative;

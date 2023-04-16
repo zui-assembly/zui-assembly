@@ -1,8 +1,8 @@
 // 引入vitepress的默认主题
-import DemoBlock from '@ruabick/vitepress-demo-block';
-import '@ruabick/vitepress-demo-block/dist/style.css';
+import DemoBlock from '@zui-assembly/markdown-demo-block';
+import '@zui-assembly/markdown-demo-block/dist/style.css';
 import DefaultTheme from 'vitepress/theme';
-import './style/var.css';
+import './var.css';
 
 import { Button as ZButton, ButtonGroup as ZButtonGroup } from '@zui-assembly/components/button';
 import ZIcon from '@zui-assembly/components/icon';

@@ -10,32 +10,28 @@ const props = defineProps<{
 
 const sfcPlaygroundUrl = computed(() => {
   const sfcJson = {
-    'App.vue': props.content,
+    'App.vue': props.content
   } as Record<string, string>;
   if (props.importMap) {
     try {
       sfcJson['import-map.json'] = JSON.stringify({
-        imports: props.importMap,
+        imports: props.importMap
       });
-    } catch {}
+    } catch {
+      /* empty */
+    }
   }
 
-  return `${sfcBaseUrl}#${btoa(
-    unescape(encodeURIComponent(JSON.stringify(sfcJson))),
-  )}`;
+  return `${sfcBaseUrl}#${btoa(unescape(encodeURIComponent(JSON.stringify(sfcJson))))}`;
 });
 </script>
 
 <template>
-  <a
-    :href="sfcPlaygroundUrl"
-    style="display: flex; align-items: center"
-    target="_blank"
-  >
-    <div style=" margin-left: 6px;width: 16px">
+  <a :href="sfcPlaygroundUrl" style="display: flex; align-items: center" target="_blank">
+    <div style="width: 16px">
       <svg
-        version="1.1"
         id="Layer_1"
+        version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px"

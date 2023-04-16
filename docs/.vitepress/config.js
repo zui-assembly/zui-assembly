@@ -41,10 +41,10 @@ export default defineConfig({
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2023-present MrZ'
-    },
-    search: {
-      provider: 'local'
     }
+    // search: {
+    //   provider: 'local'
+    // }
   },
   vue: {},
   vite: {

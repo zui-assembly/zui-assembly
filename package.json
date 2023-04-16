@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@zui-assembly/components": "workspace:*",
+    "@zui-assembly/markdown-demo-block": "workspace:^0.3.1",
     "@zui-assembly/theme-style": "workspace:*",
     "@zui-assembly/utils": "workspace:*",
     "sass": "^1.59.3",
