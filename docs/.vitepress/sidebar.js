@@ -35,6 +35,10 @@ export function getChineseThemeConfig() {
             { text: 'Upload 上传', link: '/component/upload' }
           ],
           collapsible: true
+        },
+        {
+          text: 'Others',
+          items: [{ text: 'Calendar 日历', link: '/component/calendar' }]
         }
       ]
     }

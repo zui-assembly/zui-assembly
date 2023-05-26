@@ -26,17 +26,13 @@
     > .z-button:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
-      border-left-color: hsl(0deg 0% 100% / 50%);
     }
-    > .z-button:not(:last-child) {
-      margin-right: -1px;
+    > .z-button:not(:first-child):not(:last-child) {
+      margin-right: 0;
+      border-right-color: hsl(0deg 0% 100% / 50%);
     }
     > .z-button:not(:first-child):not(:last-child) {
       border-radius: 0;
-    }
-    .z-button--primary:not(:first-child):not(:last-child) {
-      border-right-color: hsl(0deg 0% 100% / 50%);
-      border-left-color: hsl(0deg 0% 100% / 50%);
     }
     @content;
   }

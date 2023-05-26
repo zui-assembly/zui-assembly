@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme';
 import './var.css';
 
 import { Button as ZButton, ButtonGroup as ZButtonGroup } from '@zui-assembly/components/button';
+import ZCalendar from '@zui-assembly/components/calendar';
 import ZIcon from '@zui-assembly/components/icon';
 import ZLink from '@zui-assembly/components/link';
 import '@zui-assembly/theme-style/src/index.scss';
@@ -20,6 +21,7 @@ export default {
     app.use(ZButton);
     app.use(ZButtonGroup);
     app.use(ZLink);
+    app.use(ZCalendar);
 
     app.component('demo', DemoBlock);
   }

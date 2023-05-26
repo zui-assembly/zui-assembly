@@ -22,6 +22,12 @@
 .vp-doc [class*='language-']::before {
   color: var(--vp-c-text-2);
 }
+.container .content {
+  padding-right: 0;
+}
+.container .content .content-container {
+  max-width: 816px !important;
+}
 
 @media (min-width: 640px) {
   .vp-doc div[class*='language-'] {
@@ -70,8 +76,4 @@
   font-size: 15px;
   font-weight: 600;
   background-color: var(--vp-c-white-soft);
-}
-.vp-doc table td:first-child {
-  font-size: 15px;
-  font-weight: 600;
 }
