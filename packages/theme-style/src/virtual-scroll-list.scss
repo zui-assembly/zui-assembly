@@ -1,0 +1,22 @@
+@use 'mixins/mixins' as *;
+@use 'common/var' as *;
+
+@include b(virtual-scroll-list) {
+  overflow-y: auto;
+  width: 100%;
+  height: 500px;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: rgb(0 0 0 / 12%);
+    box-shadow: inset 0 0 10px rgb(0 0 0 / 20%);
+  }
+}
+
+@include hide-scrollbar();

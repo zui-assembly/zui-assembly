@@ -28,7 +28,6 @@ const items = ref(data);
 
 <template>
   <z-virtual-scroll-list
-    class="virtual-list"
     :data-sources="items"
     data-key="id"
     :keeps="30"
@@ -37,9 +36,4 @@ const items = ref(data);
   />
 </template>
 
-<style lang="scss">
-@import '@zui-assembly/theme-style/src/common/var.scss';
-.virtual-list {
-  border: 1px solid $color-danger;
-}
-</style>
+<style lang="scss"></style>

@@ -38,7 +38,10 @@ export function getChineseThemeConfig() {
         },
         {
           text: 'Others',
-          items: [{ text: 'Calendar 日历', link: '/component/calendar' }]
+          items: [
+            { text: 'Calendar 日历', link: '/component/calendar' },
+            { text: 'VirtualScrollList 无限滚动', link: '/component/virtual-scroll-list' }
+          ]
         }
       ]
     }
@@ -80,6 +83,14 @@ export function getEnglishThemeConfig() {
             { text: 'Checkbox', link: '/en/component/checkbox' },
             { text: 'Select', link: '/en/component/select' },
             { text: 'Upload', link: '/en/component/upload' }
+          ],
+          collapsible: true
+        },
+        {
+          text: 'Others',
+          items: [
+            { text: 'Calendar', link: '/en/component/calendar' },
+            { text: 'VirtualScrollList', link: '/en/component/virtual-scroll-list' }
           ],
           collapsible: true
         }

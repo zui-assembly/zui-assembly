@@ -132,3 +132,14 @@
   border-right-color: hsl(0deg 0% 100% / 50%);
   border-left-color: hsl(0deg 0% 100% / 50%);
 }
+
+@mixin hide-scrollbar() {
+  .#{'hide-scrollbar'} {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
