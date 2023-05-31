@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Random } from 'mockjs';
 import { DefineComponent, ref } from 'vue';
-import Item from './Item.vue';
+import IndefiniteItem from './indefinite-item.vue';
 
 interface DataSourceItem {
   id: number;
@@ -18,7 +18,7 @@ while (index++ < totalCount) {
   data.push({
     id: index,
     name: Random.name(),
-    desc: Random.csentence(20, 200),
+    desc: Random.csentence(20, 120),
     index
   });
 }
@@ -28,18 +28,12 @@ const items = ref(data);
 
 <template>
   <z-virtual-scroll-list
-    class="virtual-list"
     :data-sources="items"
     data-key="id"
     :keeps="30"
     :source-size="80"
-    :data-component="(Item as DefineComponent<{}, {}, any>)"
+    :data-component="(IndefiniteItem as DefineComponent<{}, {}, any>)"
   />
 </template>
 
-<style lang="scss">
-@import '@zui-assembly/theme-style/src/common/var.scss';
-.virtual-list {
-  border: 1px solid $color-danger;
-}
-</style>
+<style lang="scss"></style>

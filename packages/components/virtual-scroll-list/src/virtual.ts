@@ -19,7 +19,7 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
   let direction = ''; // 滚动的方向
   let ticking = false; // 是否在滚动中
   let fixedSizeVal = 0; // 固定高度
-  const firstRangeAvg = 0; // 第一次渲染的平均高度
+  let firstRangeAvg = 0; // 第一次渲染的平均高度
   const sizeMap = new Map<string | number, number>(); // 保存每一项的高度
   const range: RangeOptions = {
     start: 0,
@@ -32,12 +32,29 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
     return calcType === CALC_TYPE.FIXED;
   }
 
+  // 根据开始的索引值计算出上偏移量
+  function getIndexOffset(idx: number) {
+    if (!idx) return 0;
+    let _offset = 0;
+    // 累加
+    for (let i = 0; i < idx; i++) {
+      // sizeMap中保存了我们滚动的时候保存的每一项的动态高度
+      // 如果sizeMap中有这个值, 就直接取出来, 否则就是动态高度, 就取第一次渲染的平均高度
+      _offset +=
+        typeof sizeMap.get(params.uniqueIds[i]) === 'number'
+          ? (sizeMap.get(params.uniqueIds[i]) as number)
+          : getSourceHeight();
+    }
+
+    return _offset;
+  }
+
   function getPadFront() {
     // 准确计算 上偏移量
     if (isFixed()) {
       return range.start * getSourceHeight();
     } else {
-      return 0;
+      return getIndexOffset(range.start);
     }
   }
 
@@ -76,23 +93,57 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
     return isFixed() ? fixedSizeVal : firstRangeAvg || params.sourceSize;
   }
 
+  // 获取结束的索引值
   function getEndByStart(start: number) {
     const computedEnd = start + params.keeps - 1;
+    // 如start加上keeps的值大于数据源的长度, 则end就是数据源的长度减1, 否则就是start加上keeps的值
     const minEnd = Math.min(computedEnd, params.uniqueIds.length - 1);
     return minEnd;
   }
 
   function getScrollOvers() {
     // getEstimateSize() 这个值是预估的 我们要精确的找到滚动了多少个
+    console.log(offsetValue, getSourceHeight(), 'getScrollOvers');
+
     if (isFixed()) {
       return Math.floor(offsetValue / getSourceHeight());
     } else {
-      return 0;
+      // 获取最接近的滚动的那一项，计算每一项的偏移量，然后取最接近的那一项
+      // [10,30,50,200,900,1200]  -> 1300  二分查找  O(n)
+      let low = 0;
+      let high = params.uniqueIds.length;
+      let middle = 0;
+      let middleOffset = 0;
+
+      while (low <= high) {
+        // 二分查找 O(logn)
+        // 取中间值
+        middle = Math.floor((low + high) / 2);
+        // 获取中间值的偏移量
+        middleOffset = getIndexOffset(middle);
+        if (middleOffset === offsetValue) {
+          return middle;
+        }
+        // 如果 middleOffset 小于 offsetValue, 说明滚动的偏移量在middle后面
+        if (middleOffset < offsetValue) {
+          low = middle + 1;
+        } else if (middleOffset > offsetValue) {
+          // 如果 middleOffset 大于 offsetValue, 说明滚动的偏移量在middle前面
+          high = middle - 1;
+        }
+      }
+      console.log(low, high, middleOffset, offsetValue, 'highhigh');
+
+      return low > 0 ? --low : 0;
+
+      // 如果用这个平均值去算出滚动了多少个, 数据量大的时候可能会出现误差, 会有一小段的空白
+      // return Math.floor(offsetValue / getSourceHeight());
     }
   }
 
   function handleFront() {
-    const overs = getScrollOvers();
+    const overs = getScrollOvers() as number;
+    console.log(overs, range.start, 'overs');
 
     // 比如当前range.start为10, overs为9,
     if (overs > range.start) {
@@ -105,7 +156,7 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
   }
 
   function handleBehind() {
-    const overs = getScrollOvers(); // 滚动了1000像素, 每一项80的高度, 就是滚动了12.5项, 向下取个整(12)
+    const overs = getScrollOvers() as number; // 滚动了1000像素, 每一项80的高度, 就是滚动了12.5项, 向下取个整(12)
 
     // 比如我滚动了4条数据, start为0, keeps渲染范围为30条，那么buffer就是 30 / 3 = 10, 那么此时的overs就是4 - 10 = -6, 小于0, 就不需要更新start和end
     if (overs < range.start + params.buffer) {
@@ -160,6 +211,13 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
       // 如果是固定高度，但是后面的元素高度不一致，就认为是动态高度
       calcType = CALC_TYPE.DYNAMIC;
       fixedSizeVal = 0;
+    }
+
+    // 动态高度的情况下，需要重新计算平均高度
+    if (calcType === CALC_TYPE.DYNAMIC) {
+      if (sizeMap.size < Math.min(params.keeps, params.uniqueIds.length)) {
+        firstRangeAvg = Math.round([...sizeMap.values()].reduce((prev, curr) => prev + curr, 0) / sizeMap.size);
+      }
     }
   }
 

@@ -31,7 +31,6 @@ export default defineComponent({
     };
 
     const update = (newRange: RangeOptions) => {
-      console.log('🚀 ~ installVirtual', newRange);
       range.value = newRange;
     };
 
