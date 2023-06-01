@@ -103,7 +103,6 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
 
   function getScrollOvers() {
     // getEstimateSize() 这个值是预估的 我们要精确的找到滚动了多少个
-    console.log(offsetValue, getSourceHeight(), 'getScrollOvers');
 
     if (isFixed()) {
       return Math.floor(offsetValue / getSourceHeight());
@@ -132,7 +131,6 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
           high = middle - 1;
         }
       }
-      console.log(low, high, middleOffset, offsetValue, 'highhigh');
 
       return low > 0 ? --low : 0;
 
@@ -143,8 +141,6 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
 
   function handleFront() {
     const overs = getScrollOvers() as number;
-    console.log(overs, range.start, 'overs');
-
     // 比如当前range.start为10, overs为9,
     if (overs > range.start) {
       return;
@@ -170,9 +166,6 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
     // 判断方向
     direction = offset > lastScrollY ? DIRECTION.BEHIND : DIRECTION.FRONT;
     lastScrollY = offset > 0 ? offset : 0;
-    setTimeout(() => {
-      ticking = false;
-    }, 200);
     // 更新偏移量
     offsetValue = offset;
     if (direction === DIRECTION.FRONT) {
@@ -180,9 +173,17 @@ export function initVirtual(params: VirtualOptions, update: updateType) {
     } else {
       handleBehind();
     }
+    setTimeout(() => {
+      ticking = false;
+    }, 200);
   }
 
   function initScroll(offset: number) {
+    // hack: 解决在某些情况往上滚动的时候因为节流的原因导致到达边界后无法再次触发滚动更新数据的问题
+    if (offset === 0) {
+      checkUpdate(0, getEndByStart(0));
+      return false;
+    }
     // 做了一层节流
     if (direction === DIRECTION.END) return false;
     if (!ticking) {

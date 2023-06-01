@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Random } from 'mockjs';
 import { DefineComponent, ref } from 'vue';
-import Item from './Item.vue';
+import BaseItem from './base-item.vue';
 
 interface DataSourceItem {
   id: number;
@@ -32,7 +32,7 @@ const items = ref(data);
     data-key="id"
     :keeps="30"
     :source-size="80"
-    :data-component="(Item as DefineComponent<{}, {}, any>)"
+    :data-component="(BaseItem as DefineComponent<{}, {}, any>)"
   />
 </template>
 
