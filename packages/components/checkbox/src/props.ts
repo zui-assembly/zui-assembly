@@ -75,8 +75,10 @@ export const checkboxGroupProps = {
 };
 
 export const checkboxEmits = {
-  change: (value: string | number | boolean) => value,
-  'update:modelValue': (value: string | number | boolean) => value
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  change: (value: string | number | boolean) => true,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  'update:modelValue': (value: string | number | boolean) => true
 };
 
 export const checkboxGroupEmits = {
