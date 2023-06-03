@@ -56,6 +56,11 @@
     font-size: 32px !important;
   }
 }
+.vp-doc p {
+  font-size: 14px;
+  color: #5e6d82;
+  line-height: 1.5em;
+}
 .vp-doc table {
   display: table;
   width: 100%;

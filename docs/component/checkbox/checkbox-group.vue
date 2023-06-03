@@ -1,22 +1,10 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 const checkList = ref(['复选框 A😯', '选中且禁用😯']);
-
-watch(
-  () => checkList,
-  (newValue) => {
-    console.log('🚀 ~ newValue:', newValue.value);
-  },
-  {
-    immediate: true,
-    deep: true
-  }
-);
 </script>
 
 <template>
-  <div v-for="(item, index) in checkList" :key="index">{{ item }}</div>
   <z-checkbox-group v-model="checkList">
     <z-checkbox label="复选框 A😯"></z-checkbox>
     <z-checkbox label="复选框 B😯"></z-checkbox>
@@ -25,7 +13,3 @@ watch(
     <z-checkbox label="选中且禁用😯" disabled></z-checkbox>
   </z-checkbox-group>
 </template>
-
-<style lang="scss">
-@import '@zui-assembly/theme-style/src/common/var.scss';
-</style>
