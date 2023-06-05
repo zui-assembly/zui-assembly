@@ -1,6 +1,6 @@
 import { ExtractPropTypes, PropType } from 'vue';
 
-export type Size = 'medium' | 'small' | 'mini';
+export type Size = 'large' | 'default' | 'small';
 
 export const checkboxProps = {
   modelValue: {
@@ -25,7 +25,7 @@ export const checkboxProps = {
   // Checkbox的尺寸，仅在border为真时有效
   size: {
     type: String as PropType<Size>,
-    default: ''
+    default: 'default'
   },
   // 原生name
   name: {
@@ -82,6 +82,7 @@ export const checkboxEmits = {
 };
 
 export const checkboxGroupEmits = {
+  change: (value: string[] | number[]) => value,
   'update:modelValue': (value: string[] | number[]) => value
 };
 
@@ -90,6 +91,8 @@ export type CheckboxGroupProps = ExtractPropTypes<typeof checkboxGroupProps>;
 export type CheckboxEmits = typeof checkboxEmits;
 export type CheckboxGroupEmits = typeof checkboxGroupEmits;
 
-export type CheckboxGroupProvide = CheckboxGroupProps & {
-  changeGroupModel: (value: string[] | number[]) => void;
-};
+export type CheckboxGroupProvide = Partial<CheckboxGroupProps> &
+  Partial<{
+    groupChecked: string[] | number[];
+    changeGroupModel: (value: string[] | number[]) => void;
+  }>;

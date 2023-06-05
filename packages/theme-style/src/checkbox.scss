@@ -2,8 +2,11 @@
 @use 'common/var' as *;
 
 @include b(checkbox) {
+  --el-border-radius-base: 4px;
+
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin-right: 30px;
   font-size: 14px;
   font-weight: 500;
@@ -13,6 +16,39 @@
   user-select: none;
   &:last-of-type {
     margin-right: 0;
+  }
+
+  @include when('bordered') {
+    padding: 0 15px 0 9px;
+    height: 32px;
+    border: 1px solid $color-gray;
+    border-radius: var(--el-border-radius-base);
+    box-sizing: border-box;
+  }
+
+  @include whenD('.z-checkbox--large', 'bordered') {
+    padding: 0 19px 0 11px;
+    height: 40px;
+    border-radius: var(--el-border-radius-base);
+  }
+
+  @include whenD('.z-checkbox--small', 'bordered') {
+    padding: 0 11px 0 7px;
+    height: 24px;
+    border-radius: calc(var(--el-border-radius-base) - 1px);
+  }
+
+  @include when('checked') {
+    .z-checkbox__label {
+      color: $color-primary;
+    }
+  }
+
+  @include when('disabled') {
+    .z-checkbox__label {
+      color: $default-disabled-color;
+      cursor: not-allowed;
+    }
   }
 
   @include e(input) {
@@ -73,6 +109,26 @@
         &::after {
           border-color: $default-disabled-color;
           cursor: not-allowed;
+        }
+      }
+    }
+
+    @include when('indeterminate') {
+      .z-checkbox__inner {
+        border-color: $color-primary;
+        background-color: $color-primary;
+        &::before {
+          position: absolute;
+          top: 5px;
+          right: 0;
+          left: 0;
+          content: '';
+          height: 2px;
+          background-color: $color-white;
+          transform: scale(0.5);
+        }
+        &::after {
+          display: none;
         }
       }
     }

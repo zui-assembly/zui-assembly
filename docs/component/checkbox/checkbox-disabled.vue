@@ -6,6 +6,6 @@ const checked1 = ref(true);
 </script>
 
 <template>
-  <z-checkbox v-model="checked" disabled>选我😯</z-checkbox>
-  <z-checkbox v-model="checked1" disabled>选其他😯</z-checkbox>
+  <z-checkbox v-model="checked" disabled>禁用😯</z-checkbox>
+  <z-checkbox v-model="checked1">非禁用😯</z-checkbox>
 </template>

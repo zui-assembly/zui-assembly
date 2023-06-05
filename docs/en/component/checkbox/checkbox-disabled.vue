@@ -6,8 +6,8 @@ const checked1 = ref(true);
 </script>
 
 <template>
-  <z-checkbox v-model="checked" disabled>choose me😯</z-checkbox>
-  <z-checkbox v-model="checked1" disabled>choose other😯</z-checkbox>
+  <z-checkbox v-model="checked" disabled>Disabled😯</z-checkbox>
+  <z-checkbox v-model="checked1" disabled>Not disabled😯</z-checkbox>
 </template>
 
 <style lang="scss">
