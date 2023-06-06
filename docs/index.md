@@ -6,8 +6,8 @@ hero:
   text: 基于 Vue 3 的组件库.
   tagline: 掌握 vue3 组件编写
   image:
-    src: /public/person.png
-    alt: person
+    src: /public/logo.svg
+    alt: logo
   actions:
     - theme: brand
       text: 快速开始

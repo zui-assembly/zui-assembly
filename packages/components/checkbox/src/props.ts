@@ -12,6 +12,14 @@ export const checkboxProps = {
     type: [String, Number, Boolean] as PropType<string | number | boolean>,
     default: ''
   },
+  // 选中时的值
+  trueLabel: {
+    type: [String, Number] as PropType<string | number>
+  },
+  // 没有选中时的值
+  falseLabel: {
+    type: [String, Number] as PropType<string | number>
+  },
   // 是否禁用
   disabled: {
     type: Boolean,
@@ -52,7 +60,7 @@ export const checkboxGroupProps = {
   // 多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效
   size: {
     type: String as PropType<Size>,
-    default: ''
+    default: 'default'
   },
   disabled: {
     type: Boolean,
@@ -65,12 +73,39 @@ export const checkboxGroupProps = {
     type: Number
   },
   textColor: {
-    type: String,
-    default: '#ffffff'
+    type: String
   },
   fill: {
-    type: String,
-    default: '#409EFF'
+    type: String
+  }
+};
+
+export const checkboxButtonProps = {
+  // 选中状态的值（只有在checkbox-group或者绑定对象类型为array时有效）
+  label: {
+    type: [String, Number, Boolean] as PropType<string | number | boolean>
+  },
+  // 选中时的值
+  trueLabel: {
+    type: [String, Number] as PropType<string | number>
+  },
+  // 没有选中时的值
+  falseLabel: {
+    type: [String, Number] as PropType<string | number>
+  },
+  // 是否禁用
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  // 原生 name 属性
+  name: {
+    type: String
+  },
+  // 当前是否勾选
+  checked: {
+    type: Boolean,
+    default: false
   }
 };
 
@@ -88,6 +123,7 @@ export const checkboxGroupEmits = {
 
 export type CheckboxProps = ExtractPropTypes<typeof checkboxProps>;
 export type CheckboxGroupProps = ExtractPropTypes<typeof checkboxGroupProps>;
+export type CheckboxButtonProps = ExtractPropTypes<typeof checkboxButtonProps>;
 export type CheckboxEmits = typeof checkboxEmits;
 export type CheckboxGroupEmits = typeof checkboxGroupEmits;
 

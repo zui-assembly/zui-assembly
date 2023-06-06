@@ -6,7 +6,7 @@ Multiple choices from a set of alternative options ✅
 
 Used alone, it can indicate a switch between two states, and the content written in the label is the introduction after the checkbox button.
 
-<demo src="./checkbox/checkbox-base.vue" desc="Define the v-model binding variable in the el checkbox element. In a single checkbox, the default binding variable value will be Boolean, and the selected value will be true."></demo>
+<demo src="./checkbox/checkbox-base.vue" desc="Define the v-model binding variable in the el checkbox element. In a single checkbox, the default value of the binding variable will be Boolean. If true is selected, how to set the true label and false label attributes so that the variables bound to the v-model will become their values."></demo>
 
 ## Disabled State
 
@@ -31,6 +31,14 @@ The `indeterminate` attribute is used to represent the uncertain state of the ch
 Using the `min` and `max` attributes can limit the number of items that can be checked
 
 <demo src="./checkbox/checkbox-min-max.vue"></demo>
+
+## Button Style
+
+Multiple selection combinations of button styles.
+
+Simply replace the `z-checkbox` element with the `z-checkbox-button` element. Zui Assembly also provides the `size` attribute.
+
+<demo src="./checkbox/checkbox-button.vue"></demo>
 
 ## With Border
 

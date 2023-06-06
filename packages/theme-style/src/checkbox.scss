@@ -1,17 +1,36 @@
 @use 'mixins/mixins' as *;
 @use 'common/var' as *;
+:root {
+  --z-font-size-base: 14px;
+  --z-color-white: #ffffff;
+  --z-text-color-placeholder: #a8abb2;
+  --z-text-color-regular: #606266;
+  --z-color-primary: #409eff;
+  --z-color-primary-light-7: #c6e2ff;
+  --z-color-info-light-5: #c8c9cc;
+  --z-border-color-light: #e4e7ed;
+  --z-bg-color: var(--z-color-white);
+  --z-bg-color-default: var(--z-text-color-regular);
+  --z-bg-color-primary: var(--z-color-primary);
+  --z-disabled-text-color: var(--z-text-color-placeholder);
+  --z-button-disabled-border-color: var(--z-color-info-light-5);
+  --z-border-width: 1px;
+  --z-border-style: solid;
+  --z-border-color: #dcdfe6;
+  --z-border-radius-base: 4px;
+  --z-border: var(--z-border-width) var(--z-border-style) var(--z-border-color);
+  --z-transition-all: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
 
 @include b(checkbox) {
-  --el-border-radius-base: 4px;
-
   position: relative;
   display: inline-flex;
   align-items: center;
   margin-right: 30px;
-  font-size: 14px;
+  font-size: var(--z-font-size-base);
   font-weight: 500;
   white-space: nowrap;
-  color: #606266;
+  color: $color-default;
   cursor: pointer;
   user-select: none;
   &:last-of-type {
@@ -21,7 +40,7 @@
   @include when('bordered') {
     padding: 0 15px 0 9px;
     height: 32px;
-    border: 1px solid $color-gray;
+    border: var(--z-border);
     border-radius: var(--el-border-radius-base);
     box-sizing: border-box;
   }
@@ -40,7 +59,7 @@
 
   @include when('checked') {
     .z-checkbox__label {
-      color: $color-primary;
+      color: var(--z-bg-color-primary);
     }
   }
 
@@ -66,11 +85,11 @@
     position: relative;
     z-index: 1;
     display: inline-block;
-    width: 14px;
-    height: 14px;
-    border: 1px solid $color-gray;
+    width: var(--z-font-size-base);
+    height: var(--z-font-size-base);
+    border: var(--z-border);
     border-radius: 2px;
-    background-color: $color-white;
+    background-color: var(--z-bg-color);
     transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
       background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
     &::after {
@@ -79,7 +98,7 @@
       left: 4px;
       width: 3px;
       height: 7px;
-      border: 1px solid $color-white;
+      border: var(--z-border-width) var(--z-border-style) var(--z-bg-color);
       border-top: 0;
       border-left: 0;
       transition: transform 0.15s ease-in 0.05s;
@@ -93,8 +112,8 @@
   @include e(input) {
     @include when('checked') {
       .z-checkbox__inner {
-        border-color: $color-primary;
-        background-color: $color-primary;
+        border-color: var(--z-bg-color-primary);
+        background-color: var(--z-bg-color-primary);
         &::after {
           transform: rotate(45deg) scaleY(1);
         }
@@ -115,8 +134,8 @@
 
     @include when('indeterminate') {
       .z-checkbox__inner {
-        border-color: $color-primary;
-        background-color: $color-primary;
+        border-color: var(--z-bg-color-primary);
+        background-color: var(--z-bg-color-primary);
         &::before {
           position: absolute;
           top: 5px;
@@ -124,7 +143,7 @@
           left: 0;
           content: '';
           height: 2px;
-          background-color: $color-white;
+          background-color: var(--z-bg-color);
           transform: scale(0.5);
         }
         &::after {
@@ -148,6 +167,114 @@
     display: inline-block;
     padding-left: 10px;
     line-height: 19px;
-    font-size: 14px;
+    font-size: var(--z-font-size-base);
+  }
+}
+
+@include b(checkbox-group) {
+  font-size: 0;
+}
+
+@include b(checkbox-button) {
+  --z-checkbox-button-checked-bg-color: var(--z-bg-color-primary);
+  --z-checkbox-button-checked-text-color: var(--z-bg-color);
+  --z-checkbox-button-checked-border-color: var(--z-bg-color-primary);
+}
+
+@include b(checkbox-button) {
+  position: relative;
+  display: inline-block;
+  &:first-child {
+    .z-checkbox-button__label {
+      border-left: var(--z-border);
+      border-top-left-radius: var(--z-border-radius-base);
+      border-bottom-left-radius: var(--z-border-radius-base);
+      box-shadow: none !important;
+    }
+  }
+  &:last-child {
+    .z-checkbox-button__label {
+      border-top-right-radius: var(--z-border-radius-base);
+      border-bottom-right-radius: var(--z-border-radius-base);
+    }
+  }
+
+  @include e(label) {
+    display: inline-block;
+    margin: 0;
+    padding: 8px 15px;
+    font-size: var(--z-font-size-base);
+    border: var(--z-border);
+    border-left: 0;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--z-bg-color-default);
+    background: var(--z-bg-color);
+    transition: var(--z-transition-all);
+    box-sizing: border-box;
+    user-select: none;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  @include e(original) {
+    position: absolute;
+    z-index: -1;
+    margin: 0;
+    opacity: 0;
+    outline: none;
+  }
+
+  @include when('checked') {
+    &:first-child {
+      .z-checkbox-button__label {
+        border-left-color: var(--z-checkbox-button-checked-border-color);
+      }
+    }
+  }
+
+  @include when('disabled') {
+    &:first-child {
+      .z-checkbox-button__label {
+        border-left-color: var(--z-border-color-light);
+      }
+    }
+  }
+
+  @include when('checked') {
+    .z-checkbox-button__label {
+      border-color: var(--z-checkbox-button-checked-border-color);
+      color: var(--z-checkbox-button-checked-text-color);
+      background-color: var(--z-checkbox-button-checked-bg-color);
+      box-shadow: -1px 0 0 0 var(--z-color-primary-light-7);
+    }
+  }
+
+  @include m('large') {
+    .z-checkbox-button__label {
+      padding: 12px 19px;
+      font-size: var(--z-font-size-base);
+      border-radius: 0;
+    }
+  }
+
+  @include m('small') {
+    .z-checkbox-button__label {
+      padding: 5px 11px;
+      font-size: 12px;
+      border-radius: 0;
+    }
+  }
+
+  @include when('disabled') {
+    .z-checkbox-button__label {
+      border-color: var(--z-button-disabled-border-color, var(--z-border-color-light));
+      color: var(--z-disabled-text-color);
+      background-color: var(--z-bg-color, var(--z-bg-color));
+      box-shadow: none;
+      cursor: not-allowed;
+      background-image: none;
+    }
   }
 }

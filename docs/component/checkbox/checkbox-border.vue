@@ -31,7 +31,3 @@ const checkboxGroup2 = ref([]);
     </z-checkbox-group>
   </div>
 </template>
-
-<style lang="scss">
-@import '@zui-assembly/theme-style/src/common/var.scss';
-</style>

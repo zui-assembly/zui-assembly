@@ -6,8 +6,8 @@ hero:
   text: Vue 3 based component library.
   tagline: Mastering Vue3 component writing
   image:
-    src: /public/person.png
-    alt: person
+    src: ../public/logo.svg
+    alt: logo
   actions:
     - theme: brand
       text: Quick Start

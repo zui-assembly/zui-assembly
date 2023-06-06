@@ -6,7 +6,7 @@
 
 单独使用可以表示两种状态之间的切换，写在标签中的内容为 checkbox 按钮后的介绍。
 
-<demo src="./checkbox/checkbox-base.vue" desc="在 el-checkbox 元素中定义 v-model 绑定变量，单一的 checkbox 中，默认绑定变量的值会是Boolean，选中为true。"></demo>
+<demo src="./checkbox/checkbox-base.vue" desc="在 el-checkbox 元素中定义 v-model 绑定变量，单一的 checkbox 中，默认绑定变量的值会是Boolean，选中为true，如何设置了 true-label 和 false-label 属性后 v-model 绑定的变量就会变成其值。"></demo>
 
 ## 禁用状态
 
@@ -31,6 +31,14 @@
 使用 `min` 和 `max` 属性能够限制可以被勾选的项目的数量
 
 <demo src="./checkbox/checkbox-min-max.vue"></demo>
+
+## 按钮样式
+
+按钮样式的多选组合。
+
+只需要把 `z-checkbox` 元素替换为 `z-checkbox-button` 元素即可。 Zui Assembly 还提供了 `size` 属性。
+
+<demo src="./checkbox/checkbox-button.vue"></demo>
 
 ## 带有边框
 

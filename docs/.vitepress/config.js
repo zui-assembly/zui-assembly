@@ -25,7 +25,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
-    logo: '../public/cat.jpeg',
+    logo: '../public/logo.svg',
     localeLinks: {
       items: [
         { text: '简体中文', link: '/', base: '/' },

@@ -18,7 +18,29 @@
       ]"
     >
       <span :class="cls.e('inner')"></span>
-      <input type="checkbox" aria-hidden="false" :class="cls.e('original')" value />
+      <input
+        v-if="trueLabel || falseLabel"
+        :class="cls.e('original')"
+        type="checkbox"
+        :aria-hidden="indeterminate ? true : false"
+        :name="name"
+        :disabled="isDisabled"
+        :true-value="trueLabel"
+        :false-value="falseLabel"
+        @focus="focus = true"
+        @blur="focus = false"
+      />
+      <input
+        v-else
+        :class="cls.e('original')"
+        type="checkbox"
+        :name="name"
+        :aria-hidden="indeterminate ? true : false"
+        :disabled="isDisabled"
+        :value="label"
+        @focus="focus = true"
+        @blur="focus = false"
+      />
     </span>
     <span :class="cls.e('label')">
       {{ label ? label : slots.default?.()[0].children }}
@@ -41,6 +63,7 @@ const emit = defineEmits(checkboxEmits);
 const slots = useSlots() as { default?: () => { children: string }[] };
 
 const cls = createNamespace('checkbox');
+const focus = ref(false);
 
 const injectGroup = inject<CheckboxGroupProvide>('CheckboxGroupProvide', {});
 const injectIndeterminate = inject<() => { groupChecked: string[] | number[] }>('IndeterminateState', () => {
@@ -63,7 +86,15 @@ watch(
 
 /* Whether to select individually */
 const isChecked = computed(() => {
-  return props.modelValue ? true : false;
+  if ({}.toString.call(props.modelValue) === '[object Boolean]') {
+    return props.modelValue;
+  } else if (Array.isArray(props.modelValue)) {
+    return (props.modelValue as string[] | number[]).includes(props.label as string & number);
+  } else if (props.modelValue !== null && props.modelValue !== undefined) {
+    return props.modelValue === props.trueLabel;
+  } else {
+    return false;
+  }
 });
 
 /* Selected status under Group */
@@ -99,7 +130,17 @@ const checkboxSize = computed(() => {
 // 切换选中状态
 const switchChecked = (e: Event) => {
   if (isDisabled.value) return;
+
   e.preventDefault();
+
+  let value;
+  // 区分是否有trueLabel和falseLabel
+  if (props.trueLabel !== undefined && props.falseLabel !== undefined) {
+    value = isChecked.value ? props.falseLabel : props.trueLabel;
+  } else {
+    value = !isChecked.value;
+  }
+
   // 如果是checkGroup，同步checkGroup的modelValue
   if (_groupChecked.value) {
     if (_groupChecked.value.includes(props.label as string & number)) {
@@ -111,12 +152,14 @@ const switchChecked = (e: Event) => {
     }
   }
 
-  // 触发checkGroup的 emit 事件
+  /* 触发checkGroup的 emit 事件, 更新 checkGroup 的 v-model 绑定值 */
   if (injectGroup) {
     injectGroup?.changeGroupModel?.(_groupChecked.value as string[] | number[]);
   }
-  emit('change', !props.modelValue);
-  emit('update:modelValue', !props.modelValue);
+
+  /* 触发checkbox的 emit 事件, 更新 checkbox 的 v-model 绑定值 */
+  emit('change', value);
+  emit('update:modelValue', value);
 };
 </script>
 
