@@ -1,0 +1,7 @@
+{
+  "name": "@zui-assembly/hooks",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "main": "index.ts"
+}

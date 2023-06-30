@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { createNamespace } from '@zui-assembly/utils/create';
 import { computed, provide, watch } from 'vue';
-import { CheckboxGroupProvide, checkboxGroupEmits, checkboxGroupProps } from './props';
+import { CheckboxGroupContext, checkGroupKey, checkboxGroupEmits, checkboxGroupProps } from './props';
 
 defineOptions({
   name: 'z-checkbox-group',
@@ -49,7 +49,7 @@ const groupProvide = computed({
 });
 
 // provide注入modelValue给子组件使用，子组件通过inject拿到modelValue来跟label值匹配是否选中
-provide<CheckboxGroupProvide>('CheckboxGroupProvide', groupProvide.value);
+provide<CheckboxGroupContext>(checkGroupKey, groupProvide.value);
 
 provide('IndeterminateState', () => {
   return {

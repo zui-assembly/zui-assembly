@@ -13,6 +13,11 @@ import {
 } from '@zui-assembly/components/checkbox';
 import ZIcon from '@zui-assembly/components/icon';
 import ZLink from '@zui-assembly/components/link';
+import {
+  Radio as ZRadio,
+  RadioButton as ZRadioButton,
+  RadioGroup as ZRadioGroup
+} from '@zui-assembly/components/radio';
 import ZVirtualScrollList from '@zui-assembly/components/virtual-scroll-list';
 import '@zui-assembly/theme-style/src/index.scss';
 
@@ -25,7 +30,10 @@ const Components = [
   ZLink,
   ZCheckbox,
   ZCheckboxGroup,
-  ZCheckboxButton
+  ZCheckboxButton,
+  ZRadio,
+  ZRadioGroup,
+  ZRadioButton
 ];
 
 // DefaultTheme中的Layout组件, 用于渲染页面; 可以在这里添加一些全局的样式

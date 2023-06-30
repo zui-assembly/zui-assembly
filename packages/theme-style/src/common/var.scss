@@ -1,3 +1,30 @@
+:root {
+  --z-font-size-base: 14px;
+  --z-color-white: #ffffff;
+  --z-text-color-placeholder: #a8abb2;
+  --z-text-color-regular: #606266;
+  --z-color-primary: #409eff;
+  --z-color-primary-light-7: #c6e2ff;
+  --z-color-info-light-5: #c8c9cc;
+  --z-color-disabled-light-5: #c0c4cc;
+  --z-bg-color-disabled-light: #edf2fc;
+  --z-border-color-light: #e4e7ed;
+  --z-bg-color: var(--z-color-white);
+  --z-bg-color-default: var(--z-text-color-regular);
+  --z-bg-color-primary: var(--z-color-primary);
+  --z-bg-color-disabled: var(--z-bg-color-disabled-light);
+  --z-disabled-text-color: var(--z-text-color-placeholder);
+  --z-button-disabled-border-color: var(--z-color-info-light-5);
+  --z-border-width: 1px;
+  --z-border-style: solid;
+  --z-border-color: #dcdfe6;
+  --z-border-radius-base: 4px;
+  --z-border: var(--z-border-width) var(--z-border-style) var(--z-border-color);
+  --z-transition-all: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  // fill
+  --z-fill-color-light: #f5f7fa;
+}
+
 $color-primary: #409eff;
 $color-white: #ffffff;
 $color-black: #000000;

@@ -1,4 +1,4 @@
-import { ExtractPropTypes, PropType } from 'vue';
+import { ExtractPropTypes, InjectionKey, PropType } from 'vue';
 
 export type Size = 'large' | 'default' | 'small';
 
@@ -50,7 +50,7 @@ export const checkboxProps = {
     type: Boolean,
     default: false
   }
-};
+} as const;
 
 export const checkboxGroupProps = {
   modelValue: {
@@ -78,7 +78,7 @@ export const checkboxGroupProps = {
   fill: {
     type: String
   }
-};
+} as const;
 
 export const checkboxButtonProps = {
   // 选中状态的值（只有在checkbox-group或者绑定对象类型为array时有效）
@@ -107,7 +107,7 @@ export const checkboxButtonProps = {
     type: Boolean,
     default: false
   }
-};
+} as const;
 
 export const checkboxEmits = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -127,8 +127,22 @@ export type CheckboxButtonProps = ExtractPropTypes<typeof checkboxButtonProps>;
 export type CheckboxEmits = typeof checkboxEmits;
 export type CheckboxGroupEmits = typeof checkboxGroupEmits;
 
-export type CheckboxGroupProvide = Partial<CheckboxGroupProps> &
+export type CheckboxGroupContext = Partial<CheckboxGroupProps> &
   Partial<{
     groupChecked: string[] | number[];
     changeGroupModel: (value: string[] | number[]) => void;
   }>;
+
+export type CheckboxComponentProps = {
+  modelValue?: string | number | boolean;
+  label?: string | number | boolean;
+  trueLabel?: string | number;
+  falseLabel?: string | number;
+  disabled?: boolean;
+  border?: boolean;
+  size?: Size;
+  indeterminate?: boolean;
+  checked?: boolean;
+};
+
+export const checkGroupKey: InjectionKey<CheckboxGroupContext> = Symbol('checkGroupKey');
